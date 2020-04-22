@@ -1,7 +1,8 @@
 {
   "name": "@assemblyscript/node",
-  "description": "Implementations of the node.js APIs for AssemblyScript, utilizing WASI.",
   "version": "0.1.0",
+  "ascMain": "assembly/index.ts",
+  "description": "Implementations of the node.js APIs for AssemblyScript, utilizing WASI.",
   "license": "Apache-2.0",
   "types": "assembly/node.d.ts",
   "repository": {

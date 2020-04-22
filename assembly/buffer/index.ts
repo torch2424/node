@@ -13,6 +13,14 @@ export class Buffer extends Uint8Array {
     return new Buffer(size);
   }
 
+  static from(values: valueof<Buffer>[]): Buffer {
+    let result = instantiate<Buffer>(values.length);
+    //@ts-ignore
+    for (let i = 0; i < values.length; i++) result[i] = values[i];
+    return result;
+  }
+
+
   @unsafe static allocUnsafe(size: i32): Buffer {
     // range must be valid
     if (<usize>size > BLOCK_MAXSIZE) throw new RangeError(E_INVALIDLENGTH);
