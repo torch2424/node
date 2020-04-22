@@ -15,7 +15,7 @@ import {
   mem256
 } from "./shared";
 
-export function openSync(path: string, flags: string = "r", mode: string = "0o666"): u32 {
+export function openSync(path: string, flags: string = "r", mode: string = "0o666"): fd {
 
   // Implementation from the MIT liscenced as-wasi.
   // TODO: dirfdForPath is hardcoded to 3 in as-wasi
@@ -74,9 +74,11 @@ export function openSync(path: string, flags: string = "r", mode: string = "0o66
     fd_flags,
     fd_buf
   );
+
   if (res !== errno.SUCCESS) {
     throw new Error("Could not open the file!");
   }
+
   let fd = load<u32>(fd_buf);
   return fd;
 }
